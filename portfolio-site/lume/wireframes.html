@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMÉ — Low-Fidelity Wireframes</title>
+<style>
+  :root{
+    --bg:#EDEDEA; --paper:#fff; --box:#D8D8D4; --box2:#C4C4BF;
+    --line:#B4B4AE; --ink:#3A3A38; --muted:#8A8A85; --accent:#6E6E68;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Courier New',monospace;background:var(--bg);color:var(--ink);padding:40px 24px;line-height:1.4}
+  .page-head{max-width:1200px;margin:0 auto 36px;text-align:center}
+  .page-head h1{font-size:22px;letter-spacing:2px;margin-bottom:8px}
+  .page-head p{font-size:13px;color:var(--muted)}
+  .legend{display:flex;gap:24px;justify-content:center;margin-top:18px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .legend i{display:inline-block;width:14px;height:14px;background:var(--box2);border:1px dashed var(--line);margin-right:6px;vertical-align:-2px;font-style:normal}
+  .frames{display:flex;gap:48px;justify-content:center;align-items:flex-start;flex-wrap:wrap;max-width:1300px;margin:0 auto}
+  .label{text-align:center;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:bold}
+
+  /* generic wire blocks */
+  .wf{background:var(--paper);border:1.5px solid var(--line)}
+  .blk{background:var(--box);border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;
+    font-size:11px;color:var(--accent);text-align:center;text-transform:uppercase;letter-spacing:1px}
+  .ph-img{background:var(--box);border:1px dashed var(--line);position:relative;display:flex;align-items:center;justify-content:center}
+  .ph-img::after{content:"";position:absolute;inset:6px;background:
+    linear-gradient(45deg,transparent 47%,var(--line) 47%,var(--line) 53%,transparent 53%),
+    linear-gradient(-45deg,transparent 47%,var(--line) 47%,var(--line) 53%,transparent 53%)}
+  .txt{height:8px;background:var(--box2);border-radius:2px;margin:4px 0}
+  .txt.w40{width:40%}.txt.w60{width:60%}.txt.w80{width:80%}.txt.w100{width:100%}
+  .btn-wf{background:var(--accent);color:#fff;font-size:10px;letter-spacing:1px;padding:7px 14px;border-radius:3px;display:inline-block;text-transform:uppercase}
+  .annot{font-size:10px;color:var(--muted);margin-top:6px;font-style:italic}
+
+  /* ===== DESKTOP FRAME ===== */
+  .desktop{width:720px;max-width:100%}
+  .d-bar{height:22px;background:var(--box2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);letter-spacing:1px}
+  .d-header{display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--line)}
+  .d-logo{font-weight:bold;font-size:16px;letter-spacing:2px}
+  .d-search{flex:1;height:30px;border-radius:16px}
+  .d-nav{display:flex;gap:14px}
+  .d-nav .n{width:48px;height:8px;background:var(--box2);border-radius:2px}
+  .d-icons{display:flex;gap:8px}
+  .d-icons .ic{width:24px;height:24px;border-radius:50%;background:var(--box2)}
+  .d-hero{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:28px 20px}
+  .d-hero-l{display:flex;flex-direction:column;justify-content:center;gap:6px}
+  .d-hero-r{height:200px}
+  .d-section{padding:22px 20px;border-top:1px solid var(--line)}
+  .d-sec-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .d-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .d-cats .ph-img{height:120px}
+  .d-prods{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .d-card{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .d-card .ph-img{height:90px}
+  .d-card .meta{padding:8px}
+  .d-offer{height:130px;border-radius:8px}
+  .d-foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:16px;padding:24px 20px;background:var(--box);border-top:1px solid var(--line)}
+  .d-foot .col{display:flex;flex-direction:column;gap:6px}
+
+  /* ===== MOBILE FRAME ===== */
+  .mobile{width:300px}
+  .m-notch{height:22px;background:var(--box2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);border-radius:18px 18px 0 0}
+  .m-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .m-search{height:28px;margin:10px 14px;border-radius:14px}
+  .m-hero{padding:14px}
+  .m-hero .ph-img{height:150px;margin-bottom:12px}
+  .m-section{padding:16px 14px;border-top:1px solid var(--line)}
+  .m-cats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .m-cats .ph-img{height:90px}
+  .m-prods{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .m-card{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .m-card .ph-img{height:80px}
+  .m-card .meta{padding:6px}
+  .m-offer{height:120px;border-radius:8px}
+  .m-foot{padding:18px 14px;background:var(--box);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+  .flow-note{max-width:1200px;margin:40px auto 0;background:var(--paper);border:1.5px solid var(--line);padding:20px 24px;font-size:12px;color:var(--ink)}
+  .flow-note b{letter-spacing:1px}
+  .flow-note ol{margin:10px 0 0 18px}
+  .flow-note li{margin:4px 0;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>LUMÉ — LOW-FIDELITY WIREFRAMES</h1>
+  <p>Layout · content hierarchy · user flow  /  Desktop &amp; Mobile</p>
+  <div class="legend">
+    <span><i></i> Content / image placeholder</span>
+    <span><i style="background:var(--accent);border-style:solid"></i> Primary action (CTA)</span>
+    <span><i style="background:var(--box2)"></i> Text block</span>
+  </div>
+</div>
+
+<div class="frames">
+
+  <!-- ============ DESKTOP ============ -->
+  <div class="desktop">
+    <div class="label">Desktop · 1280px</div>
+    <div class="wf">
+      <div class="d-bar">ANNOUNCEMENT BAR — shipping / returns / values</div>
+
+      <!-- header -->
+      <div class="d-header">
+        <div class="d-logo">LOGO</div>
+        <div class="blk d-search">SEARCH BAR</div>
+        <div class="d-nav"><div class="n"></div><div class="n"></div><div class="n"></div></div>
+        <div class="d-icons"><div class="ic"></div><div class="ic"></div><div class="ic"></div></div>
+      </div>
+      <div class="annot" style="padding:0 20px 8px">Logo · Search · Category menu · Account / Wishlist / Cart</div>
+
+      <!-- hero -->
+      <div class="d-hero">
+        <div class="d-hero-l">
+          <div class="txt w40"></div>
+          <div class="txt w100" style="height:18px"></div>
+          <div class="txt w80" style="height:18px"></div>
+          <div class="txt w60"></div>
+          <div style="margin-top:10px"><span class="btn-wf">SHOP NOW</span> <span class="btn-wf" style="background:none;color:var(--accent);border:1px solid var(--accent)">EXPLORE</span></div>
+        </div>
+        <div class="ph-img d-hero-r">HERO BANNER / FEATURED PRODUCT</div>
+      </div>
+
+      <!-- categories -->
+      <div class="d-section">
+        <div class="d-sec-title"><div class="txt w40" style="height:14px"></div><div class="txt w40" style="width:90px"></div></div>
+        <div class="d-cats">
+          <div class="ph-img">SKINCARE</div><div class="ph-img">MAKEUP</div><div class="ph-img">HAIRCARE</div><div class="ph-img">BODY</div>
+        </div>
+        <div class="annot">Categories Section — shop by ritual</div>
+      </div>
+
+      <!-- products -->
+      <div class="d-section">
+        <div class="d-sec-title"><div class="txt w40" style="height:14px"></div><div class="txt w40" style="width:90px"></div></div>
+        <div class="d-prods">
+          <div class="d-card"><div class="ph-img">IMG</div><div class="meta"><div class="txt w80"></div><div class="txt w60"></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><div class="txt" style="width:40px;height:12px"></div><span class="btn-wf" style="padding:4px 8px">+</span></div></div></div>
+          <div class="d-card"><div class="ph-img">IMG</div><div class="meta"><div class="txt w80"></div><div class="txt w60"></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><div class="txt" style="width:40px;height:12px"></div><span class="btn-wf" style="padding:4px 8px">+</span></div></div></div>
+          <div class="d-card"><div class="ph-img">IMG</div><div class="meta"><div class="txt w80"></div><div class="txt w60"></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><div class="txt" style="width:40px;height:12px"></div><span class="btn-wf" style="padding:4px 8px">+</span></div></div></div>
+          <div class="d-card"><div class="ph-img">IMG</div><div class="meta"><div class="txt w80"></div><div class="txt w60"></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px"><div class="txt" style="width:40px;height:12px"></div><span class="btn-wf" style="padding:4px 8px">+</span></div></div></div>
+        </div>
+        <div class="annot">Product Listing — card: image · name · price · add-to-cart</div>
+      </div>
+
+      <!-- offer -->
+      <div class="d-section">
+        <div class="blk d-offer">OFFERS / PROMOTIONS BANNER — discount + CTA + countdown</div>
+      </div>
+
+      <!-- footer -->
+      <div class="d-foot">
+        <div class="col"><div class="d-logo">LOGO</div><div class="txt w100"></div><div class="txt w80"></div><div style="display:flex;gap:6px;margin-top:4px"><div class="ic" style="width:20px;height:20px;background:var(--box2);border-radius:50%"></div><div class="ic" style="width:20px;height:20px;background:var(--box2);border-radius:50%"></div><div class="ic" style="width:20px;height:20px;background:var(--box2);border-radius:50%"></div></div></div>
+        <div class="col"><div class="txt w60"></div><div class="txt w80"></div><div class="txt w60"></div><div class="txt w80"></div></div>
+        <div class="col"><div class="txt w60"></div><div class="txt w80"></div><div class="txt w60"></div><div class="txt w80"></div></div>
+        <div class="col"><div class="txt w60"></div><div class="txt w80"></div><div class="txt w60"></div><div class="txt w80"></div></div>
+      </div>
+      <div class="annot" style="padding:0 20px 14px">Footer — About · Contact · Help · Social icons</div>
+    </div>
+  </div>
+
+  <!-- ============ MOBILE ============ -->
+  <div class="mobile">
+    <div class="label">Mobile · 375px</div>
+    <div class="wf" style="border-radius:18px;overflow:hidden">
+      <div class="m-notch">●</div>
+      <div class="d-bar" style="font-size:8px">ANNOUNCEMENT BAR</div>
+
+      <!-- header -->
+      <div class="m-header">
+        <div class="d-logo" style="font-size:14px">LOGO</div>
+        <div style="display:flex;gap:8px;align-items:center"><div class="ic" style="width:22px;height:22px;background:var(--box2);border-radius:50%"></div><div class="ic" style="width:22px;height:22px;background:var(--box2);border-radius:50%"></div><div class="blk" style="width:24px;height:18px;border:none;background:var(--box2)">≡</div></div>
+      </div>
+      <div class="blk m-search">SEARCH</div>
+      <div class="annot" style="padding:0 14px">Hamburger menu collapses nav</div>
+
+      <!-- hero -->
+      <div class="m-hero">
+        <div class="ph-img">HERO BANNER</div>
+        <div class="txt w40"></div>
+        <div class="txt w100" style="height:16px"></div>
+        <div class="txt w80" style="height:16px"></div>
+        <div style="margin-top:10px;text-align:center"><span class="btn-wf" style="width:100%;display:block;text-align:center">SHOP NOW</span></div>
+      </div>
+
+      <!-- categories -->
+      <div class="m-section">
+        <div class="txt w60" style="height:13px;margin-bottom:10px"></div>
+        <div class="m-cats"><div class="ph-img">SKIN</div><div class="ph-img">MAKEUP</div><div class="ph-img">HAIR</div><div class="ph-img">BODY</div></div>
+        <div class="annot">Categories — 2-col grid</div>
+      </div>
+
+      <!-- products -->
+      <div class="m-section">
+        <div class="txt w60" style="height:13px;margin-bottom:10px"></div>
+        <div class="m-prods">
+          <div class="m-card"><div class="ph-img">IMG</div><div class="meta"><div class="txt w80"></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px"><div class="txt" style="width:30px;height:10px"></div><span class="btn-wf" style="padding:3px 6px">+</span></div></div></div>
+          <div class="m-card"><div class="ph-img">IMG</div><div class="meta"><div class="txt w80"></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px"><div class="txt" style="width:30px;height:10px"></div><span class="btn-wf" style="padding:3px 6px">+</span></div></div></div>
+          <div class="m-card"><div class="ph-img">IMG</div><div class="meta"><div class="txt w80"></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px"><div class="txt" style="width:30px;height:10px"></div><span class="btn-wf" style="padding:3px 6px">+</span></div></div></div>
+          <div class="m-card"><div class="ph-img">IMG</div><div class="meta"><div class="txt w80"></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px"><div class="txt" style="width:30px;height:10px"></div><span class="btn-wf" style="padding:3px 6px">+</span></div></div></div>
+        </div>
+        <div class="annot">Products — 2-col, stacks to 1-col on small phones</div>
+      </div>
+
+      <!-- offer -->
+      <div class="m-section"><div class="blk m-offer">OFFER BANNER + CTA</div></div>
+
+      <!-- footer -->
+      <div class="m-foot">
+        <div class="d-logo" style="font-size:13px">LOGO</div>
+        <div class="txt w100"></div>
+        <div class="txt w60"></div>
+        <div class="txt w80"></div>
+        <div class="txt w60"></div>
+        <div style="display:flex;gap:6px;margin-top:4px"><div class="ic" style="width:20px;height:20px;background:var(--box2);border-radius:50%"></div><div class="ic" style="width:20px;height:20px;background:var(--box2);border-radius:50%"></div><div class="ic" style="width:20px;height:20px;background:var(--box2);border-radius:50%"></div></div>
+        <div class="annot">Footer — accordion / stacked links</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="flow-note">
+  <b>PRIMARY USER FLOW</b>
+  <ol>
+    <li>Land on hero → understand brand promise → tap "Shop Now" (primary CTA)</li>
+    <li>OR browse Categories → drill into Skincare / Makeup / Haircare</li>
+    <li>Scan Best-sellers → product card gives image, name, price, rating → "Add to cart"</li>
+    <li>Offer banner re-engages price-sensitive users → sale CTA</li>
+    <li>Newsletter captures email (15% off incentive)</li>
+    <li>Footer for support / trust / secondary navigation</li>
+  </ol>
+</div>
+
+</body>
+</html>

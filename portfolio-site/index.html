@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ┌──────────────────────────────────────────────────────────────┐
+  │  EDIT THESE BEFORE SUBMITTING (search for "EDIT:")             │
+  │  • Your name, role, location, intro                           │
+  │  • Email + social links (LinkedIn / Dribbble / Behance)       │
+  │  • Replace placeholder projects with your real ones           │
+  │  The LUMÉ case-study links assume index.html / wireframes.html│
+  │  are hosted in the SAME folder as this file.                  │
+  └──────────────────────────────────────────────────────────────┘
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Product & UI/UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2EEE7;
+    --paper-2:#E9E3D8;
+    --ink:#151310;
+    --ink-2:#5C564C;
+    --accent:#E8502E;
+    --accent-2:#1E40FF;
+    --line:#D5CCBE;
+    --card:#FBF9F4;
+    --disp:'Bricolage Grotesque',sans-serif;
+    --body:'DM Sans',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+  .disp{font-family:var(--disp)}
+
+  /* grain / texture overlay */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.4;
+    background-image:radial-gradient(var(--line) .5px,transparent .5px);background-size:22px 22px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(242,238,231,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;justify-content:space-between;align-items:center;height:70px}
+  .brand{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.02em}
+  .brand .dot{color:var(--accent)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--ink-2);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .avail{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;border:1px solid var(--line);border-radius:30px;padding:7px 14px;background:var(--card)}
+  .avail .pulse{width:8px;height:8px;border-radius:50%;background:#2BB673;position:relative}
+  .avail .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:#2BB673;opacity:.4;animation:pulse 2s infinite}
+  @keyframes pulse{0%{transform:scale(1);opacity:.4}100%{transform:scale(2.4);opacity:0}}
+
+  /* HERO */
+  .hero{padding:90px 0 70px;position:relative}
+  .hero .reveal{opacity:0;transform:translateY(20px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .r1{animation-delay:.05s}.r2{animation-delay:.15s}.r3{animation-delay:.28s}.r4{animation-delay:.4s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .hero .tag{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;margin-bottom:26px}
+  .hero .tag::before{content:"";width:30px;height:1.5px;background:var(--accent)}
+  .hero h1{font-family:var(--disp);font-weight:600;font-size:clamp(48px,8vw,104px);line-height:.96;letter-spacing:-.03em;margin-bottom:28px}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero .lede{font-size:clamp(18px,2.2vw,22px);color:var(--ink-2);max-width:600px;line-height:1.5;margin-bottom:36px}
+  .hero-meta{display:flex;gap:40px;flex-wrap:wrap;align-items:center}
+  .hero-meta .m .mk{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2);margin-bottom:5px}
+  .hero-meta .m .mv{font-family:var(--disp);font-weight:500;font-size:17px}
+  .scroll-cue{margin-top:60px;display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-2);letter-spacing:.05em}
+  .scroll-cue svg{animation:bob 1.6s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+  /* SECTION HEAD */
+  .sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:38px;gap:20px;border-top:1px solid var(--ink);padding-top:22px}
+  .sh .num{font-family:var(--disp);font-size:14px;color:var(--accent);font-weight:600}
+  .sh h2{font-family:var(--disp);font-weight:600;font-size:clamp(26px,3.5vw,40px);letter-spacing:-.02em;flex:1;padding-left:30px}
+  .sh .meta{font-size:14px;color:var(--ink-2)}
+  section{padding:70px 0}
+
+  /* FEATURED PROJECT */
+  .feat{background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;transition:box-shadow .35s}
+  .feat:hover{box-shadow:0 30px 60px -30px rgba(21,19,16,.3)}
+  .feat-body{padding:48px 44px;display:flex;flex-direction:column}
+  .feat-body .badge{align-self:flex-start;background:var(--ink);color:var(--paper);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border-radius:30px;margin-bottom:24px}
+  .feat-body h3{font-family:var(--disp);font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.02;letter-spacing:-.02em;margin-bottom:16px}
+  .feat-body p{color:var(--ink-2);font-size:16px;max-width:440px;margin-bottom:24px}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:30px}
+  .chips span{font-size:12.5px;border:1px solid var(--line);border-radius:30px;padding:6px 13px;color:var(--ink-2)}
+  .feat-links{margin-top:auto;display:flex;flex-wrap:wrap;gap:12px}
+  .lnk{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:14.5px;padding:13px 22px;border-radius:40px;transition:.25s}
+  .lnk.solid{background:var(--accent);color:#fff}
+  .lnk.solid:hover{background:var(--ink);transform:translateY(-2px)}
+  .lnk.out{border:1.5px solid var(--ink)}
+  .lnk.out:hover{background:var(--ink);color:var(--paper)}
+  .feat-visual{position:relative;background:linear-gradient(150deg,#3A2230,#C0664A);display:grid;place-items:center;min-height:380px;overflow:hidden}
+  .feat-visual .mock{width:78%;background:#F7F1E9;border-radius:14px;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);overflow:hidden;transform:rotate(-3deg);transition:transform .5s}
+  .feat:hover .feat-visual .mock{transform:rotate(0) scale(1.02)}
+  .mock-bar{height:26px;background:#EFE6DA;display:flex;align-items:center;gap:5px;padding:0 12px}
+  .mock-bar i{width:8px;height:8px;border-radius:50%;background:#C0664A;display:block;opacity:.5}
+  .mock-body{padding:18px}
+  .mock-h{height:34px;width:65%;background:#3A2230;border-radius:6px;margin-bottom:10px}
+  .mock-t{height:9px;background:#EAD3C6;border-radius:4px;margin:6px 0}
+  .mock-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:14px}
+  .mock-grid div{aspect-ratio:1;background:#EAD3C6;border-radius:8px}
+
+  /* PROJECT GRID */
+  .pg{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer}
+  .pcard:hover{transform:translateY(-6px);box-shadow:0 26px 50px -28px rgba(21,19,16,.3)}
+  .pcard .pv{aspect-ratio:16/10;display:grid;place-items:center;font-family:var(--disp);font-weight:600;font-size:24px;color:#fff;position:relative}
+  .pv.g1{background:linear-gradient(140deg,#1E40FF,#0A1F8C)}
+  .pv.g2{background:linear-gradient(140deg,#1A1A1A,#444)}
+  .pv.g3{background:linear-gradient(140deg,#E8502E,#A8331A)}
+  .pv .soon{position:absolute;top:16px;right:16px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:5px 11px;border-radius:30px}
+  .pcard .pb{padding:22px 24px}
+  .pcard .pb h4{font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:-.01em;margin-bottom:6px}
+  .pcard .pb p{font-size:14px;color:var(--ink-2)}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:start}
+  .about-grid p{font-size:clamp(17px,2vw,20px);line-height:1.6;color:var(--ink);margin-bottom:18px}
+  .about-grid p .hl{color:var(--accent);font-weight:500}
+  .skills h5{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2);margin-bottom:14px}
+  .skills .tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px}
+  .skills .tags span{font-size:13.5px;border:1px solid var(--line);background:var(--card);border-radius:30px;padding:8px 15px}
+
+  /* CONTACT */
+  .contact{text-align:center;padding:110px 0}
+  .contact .k{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-2);margin-bottom:22px}
+  .contact h2{font-family:var(--disp);font-weight:600;font-size:clamp(40px,7vw,84px);line-height:1;letter-spacing:-.03em;margin-bottom:34px}
+  .contact h2 a{border-bottom:3px solid var(--accent);transition:color .25s}
+  .contact h2 a:hover{color:var(--accent)}
+  .socials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .socials a{font-size:14.5px;font-weight:500;border:1.5px solid var(--ink);border-radius:40px;padding:12px 24px;transition:.25s}
+  .socials a:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+
+  footer{border-top:1px solid var(--line);padding:30px 0}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--ink-2);flex-wrap:wrap;gap:12px}
+  .totop{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+  .totop:hover{color:var(--ink)}
+
+  @media(max-width:880px){
+    .nav-links{gap:18px}.nav-links a:not(.avail){display:none}
+    .feat,.about-grid{grid-template-columns:1fr}
+    .feat-visual{min-height:300px;order:-1}
+    .feat-body{padding:36px 28px}
+    .pg{grid-template-columns:1fr}
+    .sh h2{padding-left:18px}
+    section{padding:54px 0}
+    .wrap{padding:0 22px}
+    .about-grid{gap:30px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <!-- EDIT: your name/initials -->
+    <a href="#" class="brand">Your Name<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <span class="avail"><span class="pulse"></span> Open to opportunities</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="tag reveal r1">Product · UI/UX Designer</div>
+    <!-- EDIT: your name -->
+    <h1 class="reveal r2">Designing calm,<br>useful <em>interfaces.</em></h1>
+    <!-- EDIT: your intro -->
+    <p class="lede reveal r3">I'm <strong>[Your Name]</strong> — a UI/UX designer focused on clean visual systems, thoughtful user flows, and products people actually enjoy using. Currently crafting digital experiences end-to-end, from wireframe to polished UI.</p>
+    <div class="hero-meta reveal r4">
+      <div class="m"><div class="mk">Based in</div><div class="mv">Your City</div></div>
+      <div class="m"><div class="mk">Focus</div><div class="mv">UI · UX · Product</div></div>
+      <div class="m"><div class="mk">Tools</div><div class="mv">Figma · Web</div></div>
+    </div>
+    <a href="#work" class="scroll-cue">Selected work
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sh">
+      <span class="num">01</span>
+      <h2>Selected work</h2>
+      <span class="meta">2024 — 2026</span>
+    </div>
+
+    <!-- FEATURED: LUMÉ -->
+    <div class="feat">
+      <div class="feat-body">
+        <span class="badge">Featured · Case study</span>
+        <h3>LUMÉ — Beauty E-commerce Homepage</h3>
+        <p>A responsive homepage for a clean-beauty brand. Designed for strong visual hierarchy, fast browsing, and clear conversion — from a warm editorial hero down to product cards and trust signals. Built mobile-first with low-fi wireframes through to high-fidelity UI.</p>
+        <div class="chips"><span>UI Design</span><span>UX / User flow</span><span>Wireframing</span><span>Responsive</span><span>Design system</span></div>
+        <div class="feat-links">
+          <!-- These assume index.html & wireframes.html are hosted alongside this file -->
+          <a class="lnk solid" href="lume/index.html" target="_blank">View live homepage
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="lnk out" href="lume/wireframes.html" target="_blank">Wireframes</a>
+          <a class="lnk out" href="lume/design-approach.md" target="_blank">Design approach</a>
+        </div>
+      </div>
+      <div class="feat-visual">
+        <div class="mock">
+          <div class="mock-bar"><i></i><i></i><i></i></div>
+          <div class="mock-body">
+            <div class="mock-h"></div>
+            <div class="mock-t" style="width:90%"></div>
+            <div class="mock-t" style="width:70%"></div>
+            <div class="mock-grid"><div></div><div></div><div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER PROJECTS — EDIT or replace with your real work -->
+    <div class="pg" style="margin-top:24px">
+      <div class="pcard">
+        <div class="pv g1">Project Two<span class="soon">Add yours</span></div>
+        <div class="pb"><h4>Mobile App Concept</h4><p>Replace with your own project — a short one-line description goes here.</p></div>
+      </div>
+      <div class="pcard">
+        <div class="pv g2">Project Three<span class="soon">Add yours</span></div>
+        <div class="pb"><h4>Dashboard / SaaS UI</h4><p>Replace with your own project — a short one-line description goes here.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sh">
+      <span class="num">02</span>
+      <h2>About</h2>
+      <span class="meta">A bit about me</span>
+    </div>
+    <div class="about-grid">
+      <div>
+        <!-- EDIT: your bio -->
+        <p>I'm a designer who believes the best interfaces feel effortless — where <span class="hl">hierarchy, spacing, and intent</span> do the heavy lifting so people never have to think about the screen.</p>
+        <p>I work across the full process: research and user flows, low-fidelity wireframes, and high-fidelity UI with consistent design systems. I care about the small details — the rhythm of a layout, the timing of a hover, the one accent colour that earns its place.</p>
+        <p>Outside of pixels, I'm always studying products I admire and rebuilding them to understand the decisions behind them.</p>
+      </div>
+      <div class="skills">
+        <h5>What I do</h5>
+        <div class="tags"><span>UI Design</span><span>UX Design</span><span>Wireframing</span><span>Prototyping</span><span>Design Systems</span><span>Responsive Web</span><span>User Flows</span></div>
+        <h5>Tools</h5>
+        <div class="tags"><span>Figma</span><span>HTML / CSS</span><span>Prototyping</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="k">Let's work together</div>
+    <!-- EDIT: your email -->
+    <h2>Say <a href="mailto:you@email.com">hello</a></h2>
+    <div class="socials">
+      <!-- EDIT: your links -->
+      <a href="mailto:you@email.com">Email</a>
+      <a href="#" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">Dribbble</a>
+      <a href="#" target="_blank">Behance</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© 2026 Your Name — Designed &amp; built by me.</span>
+    <a href="#" class="totop">Back to top
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
