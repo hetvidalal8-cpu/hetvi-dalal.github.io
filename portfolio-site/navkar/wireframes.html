@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navkar Snacks — Low-Fidelity Wireframes</title>
+<style>
+  :root{
+    --bg:#EDEDEA; --paper:#fff; --box:#D8D8D4; --box2:#C4C4BF;
+    --line:#B4B4AE; --ink:#3A3A38; --muted:#8A8A85; --accent:#6E6E68;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Courier New',monospace;background:var(--bg);color:var(--ink);padding:40px 24px;line-height:1.4}
+  .page-head{max-width:1200px;margin:0 auto 36px;text-align:center}
+  .page-head h1{font-size:22px;letter-spacing:2px;margin-bottom:8px}
+  .page-head p{font-size:13px;color:var(--muted)}
+  .legend{display:flex;gap:24px;justify-content:center;margin-top:18px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .legend i{display:inline-block;width:14px;height:14px;background:var(--box2);border:1px dashed var(--line);margin-right:6px;vertical-align:-2px;font-style:normal}
+  .frames{display:flex;gap:48px;justify-content:center;align-items:flex-start;flex-wrap:wrap;max-width:1300px;margin:0 auto}
+  .label{text-align:center;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:bold}
+
+  .wf{background:var(--paper);border:1.5px solid var(--line)}
+  .blk{background:var(--box);border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;
+    font-size:11px;color:var(--accent);text-align:center;text-transform:uppercase;letter-spacing:1px}
+  .ph-img{background:var(--box);border:1px dashed var(--line);position:relative;display:flex;align-items:center;justify-content:center}
+  .ph-img::after{content:"";position:absolute;inset:6px;background:
+    linear-gradient(45deg,transparent 47%,var(--line) 47%,var(--line) 53%,transparent 53%),
+    linear-gradient(-45deg,transparent 47%,var(--line) 47%,var(--line) 53%,transparent 53%)}
+  .txt{height:8px;background:var(--box2);border-radius:2px;margin:4px 0}
+  .txt.w40{width:40%}.txt.w60{width:60%}.txt.w80{width:80%}.txt.w100{width:100%}
+  .btn-wf{background:var(--accent);color:#fff;font-size:10px;letter-spacing:1px;padding:7px 14px;border-radius:3px;display:inline-block;text-transform:uppercase}
+  .pill{border:1px solid var(--line);background:var(--box2);border-radius:20px;padding:5px 12px;font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--accent)}
+  .annot{font-size:10px;color:var(--muted);margin-top:6px;font-style:italic}
+
+  /* DESKTOP */
+  .desktop{width:720px;max-width:100%}
+  .d-bar{height:22px;background:var(--box2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);letter-spacing:1px}
+  .d-header{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line)}
+  .seal{width:30px;height:30px;border-radius:50%;background:var(--box2);display:grid;place-items:center;font-size:12px;color:var(--accent)}
+  .d-logo{font-weight:bold;font-size:14px;letter-spacing:1px}
+  .d-nav{display:flex;gap:12px;margin-left:8px}
+  .d-nav .n{width:46px;height:8px;background:var(--box2);border-radius:2px}
+  .spacer{flex:1}
+  .d-hero{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:26px 20px}
+  .d-hero-l{display:flex;flex-direction:column;justify-content:center;gap:6px}
+  .collage{position:relative;height:200px}
+  .collage .ph-img{position:absolute;border:3px solid var(--paper)}
+  .cc1{width:55%;height:60%;top:0;right:5%}
+  .cc2{width:45%;height:48%;bottom:0;left:0}
+  .cc3{width:38%;height:40%;bottom:6%;right:0}
+  .ftag{position:absolute;background:var(--box2);border:1px solid var(--line);border-radius:10px;font-size:9px;padding:4px 8px;z-index:5;color:var(--accent)}
+  .marq{height:26px;background:var(--box2);display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+  .d-chips{display:flex;gap:10px;justify-content:center;padding:18px 20px 6px}
+  .d-search{margin:6px 20px 0;height:32px;border-radius:18px}
+  .d-section{padding:20px 20px;border-top:1px solid var(--line)}
+  .d-sec-title{text-align:center;margin-bottom:14px;display:flex;flex-direction:column;align-items:center;gap:5px}
+  .d-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .d-card{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .d-card .ph-img{height:90px}
+  .d-card .ph-img .badge{position:absolute;top:6px;left:6px;z-index:2;font-size:8px;background:var(--box2);border:1px solid var(--line);padding:2px 6px;border-radius:10px}
+  .d-card .ph-img .price{position:absolute;bottom:6px;right:6px;z-index:2;font-size:9px;background:var(--paper);border:1px solid var(--line);padding:2px 7px;border-radius:10px}
+  .d-card .meta{padding:8px}
+  .stepper{display:flex;align-items:center;gap:4px;margin-top:6px;justify-content:space-between}
+  .stepper .st{display:flex;align-items:center;gap:4px}
+  .stepper .st b{width:18px;height:18px;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;font-size:10px;color:var(--accent)}
+  .gift{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center;background:var(--box);border-radius:10px;padding:18px;border:1px dashed var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .stp{border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center}
+  .stp .n{width:24px;height:24px;border-radius:50%;background:var(--box2);display:grid;place-items:center;margin:0 auto 8px;font-size:11px;color:var(--accent)}
+  .advance{margin-top:12px;background:var(--box2);border-radius:8px;padding:12px;font-size:10px;color:var(--accent);text-align:center}
+  .d-foot{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:16px;padding:24px 20px;background:var(--box);border-top:1px solid var(--line)}
+  .d-foot .col{display:flex;flex-direction:column;gap:6px}
+  .wafloat{position:absolute;width:34px;height:34px;border-radius:50%;background:var(--box2);border:1px solid var(--line);display:grid;place-items:center;font-size:9px;color:var(--accent)}
+
+  /* MOBILE */
+  .mobile{width:300px}
+  .m-notch{height:22px;background:var(--box2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);border-radius:18px 18px 0 0}
+  .m-header{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .m-hero{padding:14px}
+  .m-hero .ph-img{height:150px;margin-bottom:12px}
+  .m-chips{display:flex;gap:8px;flex-wrap:wrap;padding:12px 14px 0}
+  .m-search{height:30px;margin:10px 14px;border-radius:16px}
+  .m-section{padding:14px}
+  .m-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .m-card{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .m-card .ph-img{height:74px}
+  .m-card .meta{padding:6px}
+  .m-steps{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .m-foot{padding:18px 14px;background:var(--box);border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+
+  /* CART DRAWER inset */
+  .cart-demo{max-width:1200px;margin:46px auto 0;background:var(--paper);border:1.5px solid var(--line);padding:24px;border-radius:6px}
+  .cart-demo .label{margin-bottom:18px}
+  .cart-row{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
+  .drawer-wf{width:300px;border:1px solid var(--line);border-radius:8px;padding:16px}
+  .drawer-wf h4{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:10px}
+  .ditem{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+  .ditem .th{width:34px;height:34px;background:var(--box2);border-radius:5px;border:1px dashed var(--line)}
+  .qr{width:110px;height:110px;margin:10px auto;background:var(--box);border:1px dashed var(--line);display:grid;place-items:center;font-size:9px;color:var(--accent);text-align:center}
+
+  .flow-note{max-width:1200px;margin:40px auto 0;background:var(--paper);border:1.5px solid var(--line);padding:20px 24px;font-size:12px;color:var(--ink)}
+  .flow-note b{letter-spacing:1px}
+  .flow-note ol{margin:10px 0 0 18px}
+  .flow-note li{margin:4px 0;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>NAVKAR SNACKS — LOW-FIDELITY WIREFRAMES</h1>
+  <p>Homemade Gujarati farsan · snacks · chocolates  /  Order + UPI payment flow  /  Desktop &amp; Mobile</p>
+  <div class="legend">
+    <span><i></i> Content / image placeholder</span>
+    <span><i style="background:var(--accent);border-style:solid"></i> Primary action</span>
+    <span><i style="background:var(--box2)"></i> Text block</span>
+  </div>
+</div>
+
+<div class="frames">
+
+  <!-- DESKTOP -->
+  <div class="desktop">
+    <div class="label">Desktop · 1200px</div>
+    <div class="wf">
+      <div class="d-bar">ANNOUNCEMENT — homemade · no preservatives · UPI</div>
+
+      <div class="d-header">
+        <div class="seal">ન</div>
+        <div class="d-logo">BRAND + tagline</div>
+        <div class="d-nav"><div class="n"></div><div class="n"></div><div class="n"></div><div class="n"></div><div class="n"></div></div>
+        <div class="spacer"></div>
+        <span class="btn-wf">🧺 ORDER (count)</span>
+      </div>
+      <div class="annot" style="padding:0 20px 6px">Seal logo · 5 category links · sticky order button w/ live count</div>
+
+      <!-- hero -->
+      <div class="d-hero">
+        <div class="d-hero-l">
+          <span class="pill" style="align-self:flex-start">🌿 100% homemade</span>
+          <div class="txt w40"></div>
+          <div class="txt w100" style="height:20px"></div>
+          <div class="txt w80" style="height:20px"></div>
+          <div class="txt w60"></div>
+          <div style="margin-top:10px"><span class="btn-wf">🛒 BROWSE MENU</span> <span class="btn-wf" style="background:none;color:var(--accent);border:1px solid var(--accent)">HOW IT WORKS</span></div>
+          <div style="display:flex;gap:18px;margin-top:14px"><span class="pill">20+ items</span><span class="pill">Fresh</span><span class="pill">UPI</span></div>
+        </div>
+        <div class="collage">
+          <div class="ph-img cc1"></div><div class="ph-img cc2"></div><div class="ph-img cc3"></div>
+          <span class="ftag" style="top:6%;left:-2%">⭐ Bestseller</span>
+          <span class="ftag" style="bottom:8%;right:-2%">🍫 Chocolates</span>
+        </div>
+      </div>
+
+      <div class="marq">◆ scrolling marquee — khaman · dhokla · chakri · gathiya ◆</div>
+
+      <!-- chips + search -->
+      <div class="d-chips"><span class="pill">🍲 Farsan</span><span class="pill">🥨 Dry Snacks</span><span class="pill">🍫 Chocolates</span><span class="pill">🎁 Gifting</span></div>
+      <div class="blk d-search">🔍 SEARCH SNACKS</div>
+      <div class="annot" style="text-align:center;padding-top:6px">Quick category chips + live search filter</div>
+
+      <!-- menu group -->
+      <div class="d-section">
+        <div class="d-sec-title"><span class="pill">Category kicker</span><div class="txt" style="width:150px;height:14px"></div></div>
+        <div class="d-grid">
+          <div class="d-card"><div class="ph-img"><span class="badge">★</span><span class="price">₹/kg</span></div><div class="meta"><div class="txt w80"></div><div class="txt w100"></div><div class="stepper"><div class="st"><b>−</b><span style="font-size:10px;color:var(--accent)">qty</span><b>+</b></div><span class="btn-wf" style="padding:4px 10px">ADD</span></div></div></div>
+          <div class="d-card"><div class="ph-img"><span class="badge">★</span><span class="price">₹/kg</span></div><div class="meta"><div class="txt w80"></div><div class="txt w100"></div><div class="stepper"><div class="st"><b>−</b><span style="font-size:10px;color:var(--accent)">qty</span><b>+</b></div><span class="btn-wf" style="padding:4px 10px">ADD</span></div></div></div>
+          <div class="d-card"><div class="ph-img"><span class="price">₹/kg</span></div><div class="meta"><div class="txt w80"></div><div class="txt w100"></div><div class="stepper"><div class="st"><b>−</b><span style="font-size:10px;color:var(--accent)">qty</span><b>+</b></div><span class="btn-wf" style="padding:4px 10px">ADD</span></div></div></div>
+        </div>
+        <div class="annot">Menu group (Farsan / Dry Snacks / Chocolates) — card: image · badge · price-pill · name · desc · qty stepper · Add</div>
+      </div>
+
+      <!-- gifting -->
+      <div class="d-section">
+        <div class="gift">
+          <div><div class="txt w60" style="height:13px"></div><div class="txt w100"></div><div class="txt w80"></div><div style="margin-top:10px"><span class="btn-wf">💬 ENQUIRE ON WHATSAPP</span></div></div>
+          <div style="display:flex;gap:8px"><div class="ph-img" style="flex:1;height:90px"></div><div class="ph-img" style="flex:1;height:90px"></div></div>
+        </div>
+        <div class="annot">Festive hamper band — custom gift boxes via WhatsApp enquiry</div>
+      </div>
+
+      <!-- how to order -->
+      <div class="d-section">
+        <div class="d-sec-title"><span class="pill">Simple &amp; quick</span><div class="txt" style="width:130px;height:14px"></div></div>
+        <div class="steps">
+          <div class="stp"><div class="n">1</div><div class="txt w80" style="margin:0 auto"></div><div class="txt w100"></div></div>
+          <div class="stp"><div class="n">2</div><div class="txt w80" style="margin:0 auto"></div><div class="txt w100"></div></div>
+          <div class="stp"><div class="n">3</div><div class="txt w80" style="margin:0 auto"></div><div class="txt w100"></div></div>
+          <div class="stp"><div class="n">4</div><div class="txt w80" style="margin:0 auto"></div><div class="txt w100"></div></div>
+        </div>
+        <div class="advance">⏱️ ORDER-IN-ADVANCE + MINIMUM-ORDER NOTICE</div>
+        <div class="annot">How to order: pick → pay UPI → confirm WhatsApp → freshly prepared</div>
+      </div>
+
+      <!-- footer -->
+      <div class="d-foot">
+        <div class="col"><div class="d-logo">BRAND</div><div class="txt w100"></div><div class="txt w80"></div><div style="display:flex;gap:6px;margin-top:4px"><div class="seal" style="width:20px;height:20px"></div><div class="seal" style="width:20px;height:20px"></div><div class="seal" style="width:20px;height:20px"></div></div></div>
+        <div class="col"><div class="txt w60"></div><div class="txt w80"></div><div class="txt w60"></div><div class="txt w80"></div></div>
+        <div class="col"><div class="txt w60"></div><div class="txt w80"></div><div class="txt w80"></div><div class="annot" style="margin-top:2px">📞 Contact phones</div></div>
+      </div>
+      <div class="annot" style="padding:8px 20px 14px">Footer — brand · explore links · contact numbers · payment badges (UPI/GPay/PhonePe/Paytm/BHIM)</div>
+      <div style="position:relative;height:0"><span class="wafloat" style="right:16px;bottom:8px;position:absolute">💬</span></div>
+    </div>
+    <div class="annot" style="text-align:center;margin-top:8px">↘ Persistent floating WhatsApp button (all viewports)</div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="mobile">
+    <div class="label">Mobile · 375px</div>
+    <div class="wf" style="border-radius:18px;overflow:hidden">
+      <div class="m-notch">●</div>
+      <div class="d-bar" style="font-size:8px">ANNOUNCEMENT BAR</div>
+      <div class="m-header">
+        <div class="seal" style="width:26px;height:26px">ન</div>
+        <div class="d-logo" style="font-size:12px">BRAND</div>
+        <div class="spacer"></div>
+        <span class="btn-wf" style="padding:5px 9px">🧺 (0)</span>
+      </div>
+      <div class="annot" style="padding:0 14px">Nav links collapse; order button stays</div>
+
+      <div class="m-hero">
+        <span class="pill">🌿 homemade</span>
+        <div class="txt w80" style="margin-top:8px"></div>
+        <div class="txt w100" style="height:18px"></div>
+        <div class="txt w60"></div>
+        <div style="margin:10px 0"><span class="btn-wf" style="display:block;text-align:center">🛒 BROWSE MENU</span></div>
+        <div class="ph-img">HERO IMAGES</div>
+      </div>
+
+      <div class="m-chips"><span class="pill">🍲</span><span class="pill">🥨</span><span class="pill">🍫</span><span class="pill">🎁</span></div>
+      <div class="blk m-search">🔍 SEARCH</div>
+
+      <div class="m-section" style="border-top:1px solid var(--line)">
+        <div style="text-align:center;margin-bottom:10px"><span class="pill">Category</span></div>
+        <div class="m-grid">
+          <div class="m-card"><div class="ph-img"><span class="d-card" style="display:none"></span></div><div class="meta"><div class="txt w80"></div><div class="stepper"><div class="st"><b>−</b><b>+</b></div><span class="btn-wf" style="padding:3px 7px">ADD</span></div></div></div>
+          <div class="m-card"><div class="ph-img"></div><div class="meta"><div class="txt w80"></div><div class="stepper"><div class="st"><b>−</b><b>+</b></div><span class="btn-wf" style="padding:3px 7px">ADD</span></div></div></div>
+          <div class="m-card"><div class="ph-img"></div><div class="meta"><div class="txt w80"></div><div class="stepper"><div class="st"><b>−</b><b>+</b></div><span class="btn-wf" style="padding:3px 7px">ADD</span></div></div></div>
+          <div class="m-card"><div class="ph-img"></div><div class="meta"><div class="txt w80"></div><div class="stepper"><div class="st"><b>−</b><b>+</b></div><span class="btn-wf" style="padding:3px 7px">ADD</span></div></div></div>
+        </div>
+        <div class="annot">Menu — 2-col cards</div>
+      </div>
+
+      <div class="m-section" style="border-top:1px solid var(--line)">
+        <div class="blk" style="height:80px;border-radius:8px">GIFTING BAND + 💬 WHATSAPP</div>
+      </div>
+
+      <div class="m-section" style="border-top:1px solid var(--line)">
+        <div style="text-align:center;margin-bottom:10px"><span class="pill">How to order</span></div>
+        <div class="m-steps">
+          <div class="stp"><div class="n">1</div><div class="txt w100"></div></div>
+          <div class="stp"><div class="n">2</div><div class="txt w100"></div></div>
+          <div class="stp"><div class="n">3</div><div class="txt w100"></div></div>
+          <div class="stp"><div class="n">4</div><div class="txt w100"></div></div>
+        </div>
+        <div class="advance" style="margin-top:8px">⏱️ ADVANCE / MIN-ORDER</div>
+      </div>
+
+      <div class="m-foot">
+        <div class="d-logo" style="font-size:12px">BRAND</div>
+        <div class="txt w100"></div>
+        <div class="txt w60"></div>
+        <div class="annot">📞 Contact · payment badges</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CART / PAYMENT FLOW -->
+<div class="cart-demo">
+  <div class="label">Order drawer + UPI payment (slides in from right)</div>
+  <div class="cart-row">
+    <div class="drawer-wf">
+      <h4>Your order</h4>
+      <div class="ditem"><div class="th"></div><div style="flex:1"><div class="txt w80"></div><div class="txt w40"></div></div><span style="font-size:10px;color:var(--accent)">− q +</span></div>
+      <div class="ditem"><div class="th"></div><div style="flex:1"><div class="txt w80"></div><div class="txt w40"></div></div><span style="font-size:10px;color:var(--accent)">− q +</span></div>
+      <div style="display:flex;justify-content:space-between;margin-top:12px;font-size:11px;color:var(--accent)"><b>TOTAL TO PAY</b><b>₹___</b></div>
+    </div>
+    <div class="drawer-wf">
+      <h4>Scan &amp; pay — any UPI app</h4>
+      <div class="annot" style="margin-bottom:6px">Paying to: business name + UPI ID</div>
+      <div class="qr">QR<br>CODE<br>(auto amount)</div>
+      <div style="text-align:center;margin-top:8px"><span class="btn-wf">💬 CONFIRM ON WHATSAPP</span></div>
+    </div>
+  </div>
+  <div class="annot" style="text-align:center;margin-top:10px">UPI QR is generated with the order total pre-filled · order confirmed via one-tap WhatsApp message</div>
+</div>
+
+<div class="flow-note">
+  <b>PRIMARY USER FLOW</b>
+  <ol>
+    <li>Land on hero → understand "homemade, fresh, UPI" promise → tap "Browse the menu"</li>
+    <li>Jump via category chips (Farsan / Dry Snacks / Chocolates / Gifting) or live search</li>
+    <li>On each product card: set quantity with stepper (respecting min-order) → "Add"</li>
+    <li>Open the order drawer → review items + total</li>
+    <li>Pay: scan the auto-filled UPI QR with any UPI app</li>
+    <li>Confirm the order in one tap via WhatsApp</li>
+    <li>Gifting band + "How to order" + advance-notice manage expectations for a made-to-order kitchen</li>
+  </ol>
+</div>
+
+</body>
+</html>
